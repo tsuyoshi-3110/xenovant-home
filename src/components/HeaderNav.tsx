@@ -8,10 +8,8 @@ import { Menu, X } from "lucide-react";
 import { cn } from "@/lib/utils";
 
 const items = [
-  { href: "/", label: "Home" },
   { href: "/projects", label: "Projects" },
   { href: "/about", label: "About" },
-  { href: "/#contact", label: "Contact" },
 ];
 
 export default function HeaderNav() {
