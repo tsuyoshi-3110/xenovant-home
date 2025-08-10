@@ -8,7 +8,7 @@ const geistSans = Geist({ variable: "--font-geist-sans", subsets: ["latin"] });
 const geistMono = Geist_Mono({ variable: "--font-geist-mono", subsets: ["latin"] });
 
 // 公開URLに置き換えてください
-const SITE_URL = "https://xenovant.com";
+const SITE_URL = "https://xenovant.jp";
 
 export const metadata: Metadata = {
   metadataBase: new URL(SITE_URL),
@@ -44,6 +44,17 @@ export const metadata: Metadata = {
 export default function RootLayout({ children }: { children: React.ReactNode }) {
   return (
     <html lang="ja">
+      <head>
+        {/* Google Analytics */}
+
+        {/* その他のmeta */}
+        <link rel="preload" as="image" href="/log.png" type="image/png" />
+        <meta name="theme-color" content="#ffffff" />
+        <meta
+          name="google-site-verification"
+          content="7HSoD5EoR8yl7N2ffBLuIdZO3ZhT__cA4Y6HJyJnpN0"
+        />
+      </head>
       <body className={`${geistSans.variable} ${geistMono.variable} antialiased`}>
         <HeaderNav />
         {children}
