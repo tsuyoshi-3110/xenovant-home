@@ -1,26 +1,41 @@
 @import "tailwindcss";
 
-:root {
-  --background: #ffffff;
-  --foreground: #171717;
-}
+/* Tailwind v4 の推奨：トークンは @theme で定義 */
+@theme {
+  --radius: 0.5rem;
 
-@theme inline {
-  --color-background: var(--background);
-  --color-foreground: var(--foreground);
+  /* フォント（NextテンプレのGeist変数を使う想定） */
   --font-sans: var(--font-geist-sans);
   --font-mono: var(--font-geist-mono);
+
+  /* Light palette (HSL値) */
+  --color-background: 0 0% 100%;
+  --color-foreground: 222.2 84% 4.9%;
+  --color-primary: 222.2 47.4% 11.2%;
+  --color-primary-foreground: 210 40% 98%;
+  --color-border: 214.3 31.8% 91.4%;
+  --color-ring: 222.2 84% 4.9%;
 }
 
-@media (prefers-color-scheme: dark) {
-  :root {
-    --background: #0a0a0a;
-    --foreground: #ededed;
-  }
+/* Dark palette（.dark クラスで切替） */
+@theme .dark {
+  --color-background: 222.2 84% 4.9%;
+  --color-foreground: 210 40% 98%;
+  --color-primary: 210 40% 98%;
+  --color-primary-foreground: 222.2 47.4% 11.2%;
+  --color-border: 217.2 32.6% 17.5%;
+  --color-ring: 212.7 26.8% 83.9%;
 }
 
-body {
-  background: var(--background);
-  color: var(--foreground);
-  font-family: Arial, Helvetica, sans-serif;
+@theme {
+  /* ヘッダー高さ（h-14 = 3.5rem）。必要なら 4rem などに変更 */
+  --header-h: 3.5rem;
+}
+
+
+
+/* ベース適用 */
+@layer base {
+  * { @apply border-border; }
+  body { @apply bg-background text-foreground antialiased; }
 }
