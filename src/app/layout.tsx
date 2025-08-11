@@ -3,7 +3,7 @@ import type { Metadata } from "next";
 import "./globals.css";
 import HeaderNav from "@/components/HeaderNav";
 
-const SITE = "https://www.xenovant.jp";
+const SITE = "https://xenovant.jp";
 // ← LINEなどのキャッシュ回避のためにバージョンを付与（値は更新時に変えてOK）
 const OGP  = `${SITE}/og.jpg?v=20250811`;
 
