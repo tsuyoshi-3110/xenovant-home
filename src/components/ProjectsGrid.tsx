@@ -76,7 +76,7 @@ export default function ProjectsGrid() {
 
       <motion.section variants={container} initial="hidden" animate="show" className="mx-auto max-w-6xl">
         <motion.h1 variants={parent} initial="hidden" animate="show" className="text-4xl font-extrabold tracking-tight md:text-7xl">
-          {"Projects".split("").map((ch, i) => (
+          {"Products".split("").map((ch, i) => (
             <motion.span
               key={i}
               variants={child}
