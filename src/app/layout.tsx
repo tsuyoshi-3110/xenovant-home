@@ -7,54 +7,39 @@ import HeaderNav from "@/components/HeaderNav";
 const geistSans = Geist({ variable: "--font-geist-sans", subsets: ["latin"] });
 const geistMono = Geist_Mono({ variable: "--font-geist-mono", subsets: ["latin"] });
 
-// 公開URLに置き換えてください
-const SITE_URL = "https://www.xenovant.jp/";
+// 公開URL（localhost ではなく実ドメイン）
+const SITE_URL = "https://xenovant.jp";
+// 共有用画像の絶対URL（キャッシュ更新したい時は ?v=2 など付ける）
+const OGP_IMAGE = `${SITE_URL}/ogp.png?v=1`;
 
 export const metadata: Metadata = {
   metadataBase: new URL(SITE_URL),
+  alternates: { canonical: SITE_URL },
   title: { default: "ゼノバント | Xenovant", template: "%s | Xenovant" },
   description:
     "未知（Xeno）を受け入れ、前衛（avant）で切り拓く。テクノロジーで“思いやり”を形にするチーム。",
-  alternates: { canonical: "/" },
   openGraph: {
     type: "website",
     locale: "ja_JP",
-    url: "/",
+    url: SITE_URL,                  // ← 相対ではなく絶対URL
     siteName: "Xenovant",
     title: "ゼノバント | Xenovant",
-    description: "未知を受け入れ、前衛で切り拓く。テクノロジーで“思いやり”を形にするチーム。",
-    // ここがSNSで出る画像
-    images: [
-      {
-        url: "https://www.xenovant.jp//logo.png", // public/log.png を使用
-        width: 1200,
-        height: 630,
-        alt: "Xenovant",
-      },
-    ],
+    description:
+      "未知を受け入れ、前衛で切り拓く。テクノロジーで“思いやり”を形にするチーム。",
+    images: [{ url: OGP_IMAGE, width: 1200, height: 630, alt: "Xenovant" }],
   },
   twitter: {
     card: "summary_large_image",
     title: "ゼノバント | Xenovant",
-    description: "未知を受け入れ、前衛で切り拓く。テクノロジーで“思いやり”を形にするチーム。",
-    images: ["/log.png"], // 同じ画像を使用
+    description:
+      "未知を受け入れ、前衛で切り拓く。テクノロジーで“思いやり”を形にするチーム。",
+    images: [OGP_IMAGE],            // ← ここも同じ画像＆絶対URL
   },
 };
 
 export default function RootLayout({ children }: { children: React.ReactNode }) {
   return (
     <html lang="ja">
-      <head>
-        {/* Google Analytics */}
-
-        {/* その他のmeta */}
-        <link rel="preload" as="image" href="/logo.png" type="image/png" />
-        <meta name="theme-color" content="#ffffff" />
-        <meta
-          name="google-site-verification"
-          content="7HSoD5EoR8yl7N2ffBLuIdZO3ZhT__cA4Y6HJyJnpN0"
-        />
-      </head>
       <body className={`${geistSans.variable} ${geistMono.variable} antialiased`}>
         <HeaderNav />
         {children}
