@@ -1,7 +1,7 @@
 import type { Metadata } from "next";
 import AboutSection from "@/components/AboutSection";
 
-const SITE_URL = "https://www.xenovant.jp";
+const SITE_URL = "https://xenovant.jp";
 
 export const metadata: Metadata = {
   title: "About | Xenovant",
@@ -29,7 +29,7 @@ export default function AboutPage() {
               "ゼノバントは、未知（Xeno）を受け入れ、前衛（avant）で切り拓く開発チーム。テクノロジーで“思いやり”を形にする価値提供に、実装重視で取り組みます。",
             primaryImageOfPage: {
               "@type": "ImageObject",
-              url: `${SITE_URL}/logo.png?v=6`, // ← v=6 に統一
+              url: `${SITE_URL}/og.jpg?v=202508111516`, // ← v=6 に統一
             },
             breadcrumb: {
               "@type": "BreadcrumbList",
