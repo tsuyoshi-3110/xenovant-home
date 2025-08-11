@@ -3,8 +3,8 @@ import type { Metadata } from "next";
 import "./globals.css";
 import HeaderNav from "@/components/HeaderNav";
 
-const SITE_URL = "https://www.xenovant.jp";            // ← www に統一
-const OGP_IMAGE = `${SITE_URL}/logo.png?v=6`;          // ← ここに一本化
+const SITE_URL = "https://www.xenovant.jp";     // ← www で統一
+const OGP_IMAGE = `${SITE_URL}/logo.png?v=7`;   // ← 1箇所にまとめる
 
 export const metadata: Metadata = {
   metadataBase: new URL(SITE_URL),
@@ -26,7 +26,7 @@ export const metadata: Metadata = {
     card: "summary_large_image",
     title: "ゼノバント | Xenovant",
     description:
-      "未知（Xeno）を受け入れ、前衛（avant）で切り拓く。テクノロジーで“思いやり”を形にするチーム。",
+      "未知を受け入れ、前衛で切り拓く。テクノロジーで“思いやり”を形にするチーム。",
     images: [OGP_IMAGE],
   },
 };
