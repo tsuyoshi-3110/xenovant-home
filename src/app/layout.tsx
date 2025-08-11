@@ -1,37 +1,30 @@
-// app/layout.tsx
+
 import type { Metadata } from "next";
 import "./globals.css";
 import HeaderNav from "@/components/HeaderNav";
 
-const SITE_URL = "https://www.xenovant.jp"; // ← www で統一
+const SITE_URL = "https://www.xenovant.jp";
+const OGP = `${SITE_URL}/logo.png?v=7`;
 
 export const metadata: Metadata = {
   metadataBase: new URL(SITE_URL),
-  alternates: { canonical: SITE_URL },
+  alternates: { canonical: "/" },
   title: { default: "ゼノバント | Xenovant", template: "%s | Xenovant" },
-  description:
-    "未知（Xeno）を受け入れ、前衛（avant）で切り拓く。テクノロジーで“思いやり”を形にするチーム。",
+  description: "未知（Xeno）を受け入れ、前衛（avant）で切り拓く。テクノロジーで“思いやり”を形にするチーム。",
   openGraph: {
     type: "website",
-    locale: "ja_JP",
-    url: SITE_URL,
     siteName: "Xenovant",
     title: "ゼノバント | Xenovant",
     description: "未知を受け入れ、前衛で切り拓く。テクノロジーで“思いやり”を形にするチーム。",
-    images: [
-      {
-        url: "https://www.pageit.shop/images/ogpImage.png",
-        width: 1200,
-        height: 630,
-        alt: "Pageit（ページット） OGP画像",
-      },
-    ],
+    url: "/",
+    locale: "ja_JP",
+    images: [{ url: OGP, width: 1200, height: 630, alt: "Xenovant" }],
   },
   twitter: {
     card: "summary_large_image",
     title: "ゼノバント | Xenovant",
     description: "未知を受け入れ、前衛で切り拓く。テクノロジーで“思いやり”を形にするチーム。",
-    images: ["https://www.pageit.shop/images/ogpImage.png"],
+    images: [OGP],
   },
 };
 
