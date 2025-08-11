@@ -1,7 +1,7 @@
 "use client";
 
 import { motion, type Variants, type Transition } from "framer-motion";
-import { HeartHandshake, Target, Lightbulb, Users, Rocket } from "lucide-react";
+import { HeartHandshake, Target, Lightbulb, Users, Rocket, Recycle, Accessibility, Smile } from "lucide-react";
 
 const EASE: Transition["ease"] = [0.16, 1, 0.3, 1];
 
@@ -68,8 +68,8 @@ export default function AboutSection() {
         <motion.ul variants={item} className="grid gap-4 md:grid-cols-3">
           {[
             { icon: <Lightbulb className="size-5" />, title: "現場起点", body: "実務の痛みから設計する。" },
-            { icon: <Users className="size-5" />, title: "やさしさ設計", body: "誰にでも分かる体験へ。" },
-            { icon: <Rocket className="size-5" />, title: "共益志向", body: "価値が循環するプロダクトを。" },
+            { icon: <Smile className="size-5" />, title: "やさしさ設計", body: "誰にでも分かる体験へ。" },
+            { icon: <Recycle className="size-5" />, title: "共益志向", body: "価値が循環するプロダクトを。" },
           ].map((v) => (
             <li
               key={v.title}
