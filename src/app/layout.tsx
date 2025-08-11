@@ -26,7 +26,7 @@ export const metadata: Metadata = {
     // ここがSNSで出る画像
     images: [
       {
-        url: "/log.png", // public/log.png を使用
+        url: "/logo.png", // public/log.png を使用
         width: 1200,
         height: 630,
         alt: "Xenovant",
@@ -48,7 +48,7 @@ export default function RootLayout({ children }: { children: React.ReactNode }) 
         {/* Google Analytics */}
 
         {/* その他のmeta */}
-        <link rel="preload" as="image" href="/log.png" type="image/png" />
+        <link rel="preload" as="image" href="/logo.png" type="image/png" />
         <meta name="theme-color" content="#ffffff" />
         <meta
           name="google-site-verification"
