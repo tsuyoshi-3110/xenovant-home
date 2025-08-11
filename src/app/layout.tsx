@@ -5,7 +5,7 @@ import HeaderNav from "@/components/HeaderNav";
 
 const SITE = "https://xenovant.jp";
 // ← LINEなどのキャッシュ回避のためにバージョンを付与（値は更新時に変えてOK）
-const OGP = `${SITE}/og.jpg?v=20250812`;
+const OGP = `${SITE}/og.jpg`;
 
 export const metadata = {
   metadataBase: new URL(SITE),
