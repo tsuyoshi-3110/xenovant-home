@@ -11,13 +11,11 @@ export const metadata: Metadata = {
     title: "Projects | Xenovant",
     description: "Xenovantが手がけるプロジェクト一覧。TSMatelix、Pageit、manabeba など。",
     url: "/projects",
-    images: [{ url: "/logo.png", width: 1200, height: 630, alt: "Xenovant Projects" }],
   },
   twitter: {
     card: "summary_large_image",
     title: "Projects | Xenovant",
     description: "Xenovantが手がけるプロジェクト一覧。TSMatelix、Pageit、manabeba など。",
-    images: ["/logo.png"],
   },
   keywords: ["Xenovant", "Projects", "TSMatelix", "Pageit", "manabeba"],
 };
