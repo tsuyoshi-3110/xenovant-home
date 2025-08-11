@@ -4,7 +4,7 @@ import "./globals.css";
 import HeaderNav from "@/components/HeaderNav";
 
 const SITE_URL = "https://www.xenovant.jp";       // ← www を正に
-const OGP_IMAGE = `${SITE_URL}/ogp.png?v=2`;      // ← 絶対URL & キャッシュバスト
+const OGP_IMAGE = `${SITE_URL}/logo.png?v=2`;      // ← 絶対URL & キャッシュバスト
 
 export const metadata: Metadata = {
   metadataBase: new URL(SITE_URL),
