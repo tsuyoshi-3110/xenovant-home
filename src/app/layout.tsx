@@ -3,22 +3,21 @@ import type { Metadata } from "next";
 import "./globals.css";
 import HeaderNav from "@/components/HeaderNav";
 
-const SITE_URL = "https://www.xenovant.jp";
-const OGP = `${SITE_URL}/logo.png?v=7`;
+const SITE = "https://www.xenovant.jp";
+const OGP  = `${SITE}/og.jpg`;
 
-export const metadata: Metadata = {
-  metadataBase: new URL(SITE_URL),
-  alternates: { canonical: "/" },
+export const metadata = {
+  metadataBase: new URL(SITE),
+  alternates: { canonical: SITE },
   title: { default: "ゼノバント | Xenovant", template: "%s | Xenovant" },
-  description:
-    "未知（Xeno）を受け入れ、前衛（avant）で切り拓く。テクノロジーで“思いやり”を形にするチーム。",
+  description: "未知（Xeno）を受け入れ、前衛（avant）で切り拓く。テクノロジーで“思いやり”を形にするチーム。",
   openGraph: {
     type: "website",
+    locale: "ja_JP",
+    url: SITE,
     siteName: "Xenovant",
     title: "ゼノバント | Xenovant",
     description: "未知を受け入れ、前衛で切り拓く。テクノロジーで“思いやり”を形にするチーム。",
-    url: "/",
-    locale: "ja_JP",
     images: [{ url: OGP, width: 1200, height: 630, alt: "Xenovant" }],
   },
   twitter: {
@@ -27,7 +26,7 @@ export const metadata: Metadata = {
     description: "未知を受け入れ、前衛で切り拓く。テクノロジーで“思いやり”を形にするチーム。",
     images: [OGP],
   },
-};
+} satisfies Metadata;
 
 export default function RootLayout({ children }: { children: React.ReactNode }) {
   return (
@@ -40,7 +39,7 @@ export default function RootLayout({ children }: { children: React.ReactNode }) 
           content="未知を受け入れ、前衛で切り拓く。テクノロジーで“思いやり”を形にするチーム。"
         />
         <meta property="og:type" content="website" />
-        <meta property="og:url" content={SITE_URL} />
+        <meta property="og:url" content={SITE} />
         <meta property="og:site_name" content="Xenovant" />
         <meta property="og:locale" content="ja_JP" />
         <meta property="og:image" content={OGP} />
@@ -55,7 +54,7 @@ export default function RootLayout({ children }: { children: React.ReactNode }) 
           content="未知を受け入れ、前衛で切り拓く。テクノロジーで“思いやり”を形にするチーム。"
         />
         <meta name="twitter:image" content={OGP} />
-        <link rel="canonical" href={SITE_URL} />
+        <link rel="canonical" href={SITE} />
       </head>
       <body>
         <HeaderNav />
