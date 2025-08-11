@@ -20,7 +20,7 @@ export const metadata: Metadata = {
     description: "未知を受け入れ、前衛で切り拓く。テクノロジーで“思いやり”を形にするチーム。",
     images: [
       {
-        url: "https://www.pageit.shop/images/ogpImage.jpg",
+        url: "https://www.pageit.shop/images/ogpImage.png",
         width: 1200,
         height: 630,
         alt: "Pageit（ページット） OGP画像",
@@ -31,7 +31,7 @@ export const metadata: Metadata = {
     card: "summary_large_image",
     title: "ゼノバント | Xenovant",
     description: "未知を受け入れ、前衛で切り拓く。テクノロジーで“思いやり”を形にするチーム。",
-    images: ["https://www.pageit.shop/images/ogpImage.jpg"],
+    images: ["https://www.pageit.shop/images/ogpImage.png"],
   },
 };
 
