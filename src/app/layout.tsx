@@ -4,26 +4,30 @@ import "./globals.css";
 import HeaderNav from "@/components/HeaderNav";
 
 const SITE = "https://www.xenovant.jp";
-const OGP  = `${SITE}/og.jpg`;
+// ← LINEなどのキャッシュ回避のためにバージョンを付与（値は更新時に変えてOK）
+const OGP  = `${SITE}/og.jpg?v=20250811`;
 
 export const metadata = {
   metadataBase: new URL(SITE),
   alternates: { canonical: SITE },
   title: { default: "ゼノバント | Xenovant", template: "%s | Xenovant" },
-  description: "未知（Xeno）を受け入れ、前衛（avant）で切り拓く。テクノロジーで“思いやり”を形にするチーム。",
+  description:
+    "未知（Xeno）を受け入れ、前衛（avant）で切り拓く。テクノロジーで“思いやり”を形にするチーム。",
   openGraph: {
     type: "website",
     locale: "ja_JP",
     url: SITE,
     siteName: "Xenovant",
     title: "ゼノバント | Xenovant",
-    description: "未知を受け入れ、前衛で切り拓く。テクノロジーで“思いやり”を形にするチーム。",
+    description:
+      "未知を受け入れ、前衛で切り拓く。テクノロジーで“思いやり”を形にするチーム。",
     images: [{ url: OGP, width: 1200, height: 630, alt: "Xenovant" }],
   },
   twitter: {
     card: "summary_large_image",
     title: "ゼノバント | Xenovant",
-    description: "未知を受け入れ、前衛で切り拓く。テクノロジーで“思いやり”を形にするチーム。",
+    description:
+      "未知を受け入れ、前衛で切り拓く。テクノロジーで“思いやり”を形にするチーム。",
     images: [OGP],
   },
 } satisfies Metadata;
@@ -32,7 +36,7 @@ export default function RootLayout({ children }: { children: React.ReactNode }) 
   return (
     <html lang="ja">
       <head>
-        {/* ← ここを“保険”で直書き（絶対URL・www統一・クエリ付） */}
+        {/* 直書き（保険）— 主要クローラーが拾いやすい並びで設置 */}
         <meta property="og:title" content="ゼノバント | Xenovant" />
         <meta
           property="og:description"
@@ -43,6 +47,7 @@ export default function RootLayout({ children }: { children: React.ReactNode }) 
         <meta property="og:site_name" content="Xenovant" />
         <meta property="og:locale" content="ja_JP" />
         <meta property="og:image" content={OGP} />
+        <meta property="og:image:secure_url" content={OGP} />
         <meta property="og:image:width" content="1200" />
         <meta property="og:image:height" content="630" />
         <meta property="og:image:alt" content="Xenovant" />
