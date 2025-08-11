@@ -8,7 +8,7 @@ const geistSans = Geist({ variable: "--font-geist-sans", subsets: ["latin"] });
 const geistMono = Geist_Mono({ variable: "--font-geist-mono", subsets: ["latin"] });
 
 // 公開URLに置き換えてください
-const SITE_URL = "https://xenovant.jp";
+const SITE_URL = "https://www.xenovant.jp/";
 
 export const metadata: Metadata = {
   metadataBase: new URL(SITE_URL),
@@ -26,7 +26,7 @@ export const metadata: Metadata = {
     // ここがSNSで出る画像
     images: [
       {
-        url: "https://xenovant.jp/logo.png", // public/log.png を使用
+        url: "https://www.xenovant.jp//logo.png", // public/log.png を使用
         width: 1200,
         height: 630,
         alt: "Xenovant",
