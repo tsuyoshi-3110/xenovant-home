@@ -1,10 +1,10 @@
-// src/app/layout.tsx
+// app/layout.tsx
 import type { Metadata } from "next";
 import "./globals.css";
 import HeaderNav from "@/components/HeaderNav";
 
-const SITE_URL = "https://www.xenovant.jp";       // ← www を正に
-const OGP_IMAGE = `${SITE_URL}/logo.png?v=2`;      // ← 絶対URL & キャッシュバスト
+const SITE_URL = "https://www.xenovant.jp";          // ← www を正に
+const OGP_IMAGE = `${SITE_URL}/logo.png?v=3`;        // ← 絶対URL & キャッシュバスト
 
 export const metadata: Metadata = {
   metadataBase: new URL(SITE_URL),
@@ -15,7 +15,7 @@ export const metadata: Metadata = {
   openGraph: {
     type: "website",
     locale: "ja_JP",
-    url: SITE_URL,                                 // ← 絶対URL
+    url: SITE_URL,
     siteName: "Xenovant",
     title: "ゼノバント | Xenovant",
     description:
@@ -27,7 +27,7 @@ export const metadata: Metadata = {
     title: "ゼノバント | Xenovant",
     description:
       "未知を受け入れ、前衛で切り拓く。テクノロジーで“思いやり”を形にするチーム。",
-    images: [OGP_IMAGE],                            // ← 同じ絶対URL
+    images: [OGP_IMAGE],
   },
 };
 
