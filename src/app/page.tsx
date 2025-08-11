@@ -12,17 +12,15 @@ export const metadata: Metadata = {
     type: "website",
     locale: "ja_JP",
     title: "ゼノバント | Xenovant",
-    description:
-      "未知を受け入れ、前衛で切り拓く。テクノロジーで“思いやり”を形にするチーム。",
+    description: "未知を受け入れ、前衛で切り拓く。テクノロジーで“思いやり”を形にするチーム。",
     url: "/",
-    images: [{ url: "/og.jpg", width: 1200, height: 630, alt: "ゼノバント | Xenovant" }], // public/og.jpg を用意
+    images: [{ url: "/logo.png", width: 1200, height: 630, alt: "ゼノバント | Xenovant" }], // public/logo.png を用意
   },
   twitter: {
     card: "summary_large_image",
     title: "ゼノバント | Xenovant",
-    description:
-      "未知を受け入れ、前衛で切り拓く。テクノロジーで“思いやり”を形にするチーム。",
-    images: ["/og.jpg"],
+    description: "未知を受け入れ、前衛で切り拓く。テクノロジーで“思いやり”を形にするチーム。",
+    images: ["/logo.png"],
   },
 };
 
