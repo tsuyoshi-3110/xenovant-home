@@ -9,12 +9,10 @@ const geistMono = Geist_Mono({ variable: "--font-geist-mono", subsets: ["latin"]
 
 // 公開URLに置き換えてください
 const SITE_URL = "https://xenovant.jp";
-
 export const metadata: Metadata = {
   metadataBase: new URL(SITE_URL),
   title: { default: "ゼノバント | Xenovant", template: "%s | Xenovant" },
-  description:
-    "未知（Xeno）を受け入れ、前衛（avant）で切り拓く。テクノロジーで“思いやり”を形にするチーム。",
+  description: "未知を受け入れ、前衛で切り拓く。テクノロジーで“思いやり”を形にするチーム。",
   alternates: { canonical: "/" },
   openGraph: {
     type: "website",
@@ -23,10 +21,10 @@ export const metadata: Metadata = {
     siteName: "Xenovant",
     title: "ゼノバント | Xenovant",
     description: "未知を受け入れ、前衛で切り拓く。テクノロジーで“思いやり”を形にするチーム。",
-    // ここがSNSで出る画像
     images: [
       {
-        url: "/logo.png", // public/log.png を使用
+        // できれば 1200x630 の専用OGP画像にする（例: /ogp.png）
+        url: new URL("/logo.png", SITE_URL).toString(),
         width: 1200,
         height: 630,
         alt: "Xenovant",
@@ -37,7 +35,7 @@ export const metadata: Metadata = {
     card: "summary_large_image",
     title: "ゼノバント | Xenovant",
     description: "未知を受け入れ、前衛で切り拓く。テクノロジーで“思いやり”を形にするチーム。",
-    images: ["/log.png"], // 同じ画像を使用
+    images: ["/logo.png"], // ← タイプミス修正
   },
 };
 
