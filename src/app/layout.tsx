@@ -5,7 +5,7 @@ import HeaderNav from "@/components/HeaderNav";
 
 const SITE = "https://xenovant.jp";
 // ← LINEなどのキャッシュ回避のためにバージョンを付与（値は更新時に変えてOK）
-const OGP  = `${SITE}/og.jpg?v=20250811`;
+const OGP = `${SITE}/og.jpg?v=20250812`;
 
 export const metadata = {
   metadataBase: new URL(SITE),
@@ -19,15 +19,13 @@ export const metadata = {
     url: SITE,
     siteName: "Xenovant",
     title: "ゼノバント | Xenovant",
-    description:
-      "未知を受け入れ、前衛で切り拓く。テクノロジーで“思いやり”を形にするチーム。",
+    description: "未知を受け入れ、前衛で切り拓く。テクノロジーで“思いやり”を形にするチーム。",
     images: [{ url: OGP, width: 1200, height: 630, alt: "Xenovant" }],
   },
   twitter: {
     card: "summary_large_image",
     title: "ゼノバント | Xenovant",
-    description:
-      "未知を受け入れ、前衛で切り拓く。テクノロジーで“思いやり”を形にするチーム。",
+    description: "未知を受け入れ、前衛で切り拓く。テクノロジーで“思いやり”を形にするチーム。",
     images: [OGP],
   },
 } satisfies Metadata;
