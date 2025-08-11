@@ -3,8 +3,8 @@ import type { Metadata } from "next";
 import "./globals.css";
 import HeaderNav from "@/components/HeaderNav";
 
-const SITE_URL = "https://www.xenovant.jp";        // ← www を正に
-const OGP_IMAGE = `${SITE_URL}/ogp.png?v=4`;       // ← 絶対URL + キャッシュバスト
+const SITE_URL = "https://www.xenovant.jp"; // ← www を正に
+const OGP_IMAGE = `${SITE_URL}/logo.png?v=4`; // ← 絶対URL + キャッシュバスト
 
 export const metadata: Metadata = {
   metadataBase: new URL(SITE_URL),
@@ -15,19 +15,17 @@ export const metadata: Metadata = {
   openGraph: {
     type: "website",
     locale: "ja_JP",
-    url: SITE_URL,                         // ← 絶対URL
+    url: SITE_URL, // ← 絶対URL
     siteName: "Xenovant",
     title: "ゼノバント | Xenovant",
-    description:
-      "未知を受け入れ、前衛で切り拓く。テクノロジーで“思いやり”を形にするチーム。",
+    description: "未知を受け入れ、前衛で切り拓く。テクノロジーで“思いやり”を形にするチーム。",
     images: [{ url: OGP_IMAGE, width: 1200, height: 630, alt: "Xenovant" }],
   },
   twitter: {
     card: "summary_large_image",
     title: "ゼノバント | Xenovant",
-    description:
-      "未知を受け入れ、前衛で切り拓く。テクノロジーで“思いやり”を形にするチーム。",
-    images: [OGP_IMAGE],                   // ← 同じ絶対URL
+    description: "未知を受け入れ、前衛で切り拓く。テクノロジーで“思いやり”を形にするチーム。",
+    images: [OGP_IMAGE], // ← 同じ絶対URL
   },
 };
 
