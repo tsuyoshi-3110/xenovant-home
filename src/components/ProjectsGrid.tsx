@@ -9,25 +9,44 @@ type Project = {
   slug: string;
   desc: string;
   img?: string;
+  images?: string[];
   tags?: string[];
   link?: string; // 外部リンク（ない場合は「制作中」表示）
 };
 
 const PROJECTS: Project[] = [
   {
+    id: "procnova",
+    name: "ProcNova",
+    slug: "procnova",
+    desc: "工程表・工事写真・居住者案内・職人連携を統合する、マンション大規模修繕工事向け施工管理システム。",
+    img: "/projects/procNovaLogoIcon.png",
+    tags: ["Construction", "SaaS"],
+    link: "https://procnova.jp/",
+  },
+  {
+    id: "proclink",
+    name: "Proclink",
+    slug: "proclink",
+    desc: "現場で撮影した写真を工程構造に紐づけ、自動整理する工事写真撮影アプリ。",
+    img: "/projects/proclinkIcon.png",
+    tags: ["Construction", "App"],
+    link: "https://procnova.jp/",
+  },
+  {
     id: "tsmatelix",
     name: "TSMatelix",
     slug: "tsmatelix",
     desc: "建設現場の材料発注を、よりスムーズに。次世代の統合型アプリ",
     img: "/projects/tsmatelixLogo.png",
-    tags: ["SaaS", "Metrics"],
+    tags: ["Construction", "Materials"],
     link: "https://www.tsmatelix.shop/",
   },
   {
     id: "pageit",
     name: "Pageit",
     slug: "pageit",
-    desc: "SNS世代のために設計された、動画×スマホ×AI対応のホームページサービス。",
+    desc: "SNS世代のために設計された、動画×スマホ×AI対応のウェブアプリサービス。",
     img: "/projects/iconImage.png",
     tags: ["Web", "Publisher"],
     link: "https://www.pageit.shop/",
@@ -93,7 +112,22 @@ export default function ProjectsGrid() {
             <motion.li key={p.id} variants={item} className="group h-full">
               <div className="overflow-hidden rounded-2xl border bg-background/70 backdrop-blur  shadow-lg transition-shadow group-hover:shadow-xl h-full flex flex-col">
                 <div className="relative aspect-[16/10] w-full">
-                  {p.img ? (
+                  {p.images && p.images.length > 0 ? (
+                    <div className="absolute inset-0 flex items-center justify-center gap-4 px-5">
+                      {p.images.map((img) => (
+                        <div key={img} className="relative h-[78%] flex-1">
+                          <Image
+                            src={img}
+                            alt={`${p.name} preview`}
+                            fill
+                            sizes="(min-width: 1024px) 16vw, (min-width: 640px) 25vw, 50vw"
+                            className="object-contain transition-transform duration-500 group-hover:scale-[1.03]"
+                            unoptimized
+                          />
+                        </div>
+                      ))}
+                    </div>
+                  ) : p.img ? (
                     <Image
                       src={p.img}
                       alt={`${p.name} preview`}
