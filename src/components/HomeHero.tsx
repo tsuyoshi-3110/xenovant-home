@@ -79,14 +79,14 @@ export default function HomeHero() {
         </motion.h1>
 
         <StaggerText
-          text="XENOVANT。それは『革新』と『先駆者』を意味する言葉から生まれた名前。誰もまだ到達していない領域へ、一歩目を踏み出すための存在です。"
+          text="XENOVANTは、『革新』と『先駆者』の意味を込めた名前です。現場で生まれる課題に向き合い、実用的なテクノロジーで新しい仕組みをつくっていきます。"
           className="text-muted-foreground mx-auto mt-5 max-w-3xl text-lg leading-relaxed md:text-xl"
           delay={0.2}
         />
 
         <StaggerText
-          text="目指すのは、不滅なる平等の番人。技術によって業界の常識を書き換え、すべての人が同じスタートラインに立てる世界をつくる。XENOVANTは、その変革を実現するために存在します。"
-          className="text-muted-foreground/90 mx-auto mt-3 max-w-3xl text-base leading-relaxed md:text-lg"
+          text="私たちが目指すのは、誰もが公平に技術の恩恵を受けられる社会です。属人化や非効率を減らし、使う人の仕事を少しでも楽にする。XENOVANTは、そのためのプロダクトを開発し続けます。"
+          className="text-muted-foreground/90 mx-auto mt-3 max-w-4xl text-base leading-relaxed md:text-lg"
           delay={0.3}
         />
 
