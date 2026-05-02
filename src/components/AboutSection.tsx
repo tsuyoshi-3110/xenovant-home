@@ -60,16 +60,16 @@ export default function AboutSection() {
 
         {/* 説明文 */}
         <motion.p variants={item} className="text-muted-foreground -mt-6 leading-relaxed md:-mt-4">
-          ゼノバントは、未知（Xeno）を受け入れ、前衛（avant）で切り拓く開発チーム。
-          テクノロジーで“思いやり”を形にする価値提供に、実装重視で取り組みます。
+          Xenovantは、現場に残る非効率や格差を、実用的なテクノロジーで変えていく開発チームです。
+          建設・店舗・地域ビジネスなど、実際の業務で生まれる痛みを起点に、誰もが公平に価値を受け取れる仕組みをつくります。
         </motion.p>
 
         {/* 原則カード */}
         <motion.ul variants={item} className="grid gap-4 md:grid-cols-3">
           {[
-            { icon: <Lightbulb className="size-5" />, title: "現場起点", body: "実務の痛みから設計する。" },
-            { icon: <Smile className="size-5" />, title: "やさしさ設計", body: "誰にでも分かる体験へ。" },
-            { icon: <Recycle className="size-5" />, title: "共益志向", body: "価値が循環するプロダクトを。" },
+            { icon: <Lightbulb className="size-5" />, title: "現場から生まれる", body: "机上の理想ではなく、実務の困りごとから設計する。" },
+            { icon: <Smile className="size-5" />, title: "誰でも使える", body: "専門知識がなくても、迷わず使える体験をつくる。" },
+            { icon: <Recycle className="size-5" />, title: "価値を循環させる", body: "一部の人だけでなく、関わる人全体に利益が巡る仕組みへ。" },
           ].map((v) => (
             <li
               key={v.title}
@@ -96,15 +96,16 @@ export default function AboutSection() {
               <HeartHandshake className="size-5" aria-hidden />
             </div>
             <div className="flex-1">
-              <h2 className="text-xl font-semibold tracking-tight">社会へのコミットメント</h2>
+              <h2 className="text-xl font-semibold tracking-tight">Xenovantが目指す未来</h2>
               <p className="text-muted-foreground mt-2 leading-relaxed">
-                当社の<strong>Stripe決済収益の1%</strong>は、売上発生と同時に自動的に社会貢献へ送られます。
-                取引のたびに、未来への投資が積み重なります。
+                Xenovantの目的は、ただ便利なシステムを作ることではありません。
+                業界に残る無駄、不公平、属人化をなくし、技術の恩恵を誰もが受けられる社会をつくることです。
+                さらに、当社の<strong>Stripe決済収益の1%</strong>は、売上発生と同時に自動的に社会貢献へ送られます。
               </p>
               <div className="mt-4 flex flex-wrap gap-2">
                 <div className="bg-background/80 inline-flex items-center gap-2 rounded-full border px-3 py-1 text-xs shadow-sm">
                   <Target className="size-3.5" aria-hidden />
-                  1% for a Better Future
+                  Technology for Fairness
                 </div>
                 <div className="bg-background/80 inline-flex items-center gap-2 rounded-full border px-3 py-1 text-xs shadow-sm">
                   Stripe 自動寄付

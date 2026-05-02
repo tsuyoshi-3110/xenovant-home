@@ -90,6 +90,15 @@ export default function HomeHero() {
           delay={0.3}
         />
 
+        <motion.div
+          initial={{ opacity: 0, y: 8 }}
+          animate={{ opacity: 1, y: 0 }}
+          transition={{ duration: 0.8, delay: 0.6, ease: EASE }}
+          className="mx-auto mt-6 inline-flex items-center rounded-full border border-gray-300 bg-gray-900 px-4 py-2 text-xs font-semibold tracking-wide text-white shadow-lg backdrop-blur dark:border-white/20 dark:bg-white dark:text-gray-900"
+        >
+          Patented Technology / Japan Patent No. 7611328
+        </motion.div>
+
         <div className="via-foreground/30 mx-auto mt-10 h-px w-24 bg-gradient-to-r from-transparent to-transparent" />
       </section>
 

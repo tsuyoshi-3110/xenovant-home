@@ -10,6 +10,7 @@ import { cn } from "@/lib/utils";
 const items = [
   { href: "/Products", label: "Products" },
   { href: "/about", label: "About" },
+  { href: "mailto:xenovant.ts@gmail.com", label: "Contact" },
 ];
 
 export default function HeaderNav() {
@@ -28,20 +29,21 @@ export default function HeaderNav() {
   useEffect(() => setOpen(false), [pathname, hash]);
 
   return (
-    <header className="fixed inset-x-0 top-0 z-50 border-b border-white/10 bg-black/80 text-white backdrop-blur supports-[backdrop-filter]:bg-black/65">
+    <header className="fixed inset-x-0 top-0 z-50 border-b border-white/10 bg-black/95 text-white backdrop-blur supports-[backdrop-filter]:bg-black/90">
       <div className="mx-auto flex h-[var(--header-h)] max-w-6xl items-center justify-between px-4">
         {/* ロゴ＋ブランド */}
         <Link href="/" className="flex items-center gap-3">
-          <Image src="/logo.png" alt="Xenovant" width={32} height={32} className="h-8 w-8" />
+          <Image src="/logoSilver.png" alt="Xenovant" width={40} height={40} className="h-12 w-12" />
           <span className="text-lg font-semibold tracking-wide">Xenovant</span>
         </Link>
 
         {/* デスクトップナビ */}
         <nav className="hidden items-center gap-6 md:flex">
           {items.map((it) => {
+            const isMail = it.href.startsWith("mailto:");
             const targetHash = it.href.startsWith("/#") ? `#${it.href.split("#")[1]}` : "";
             const active =
-              (it.href === "/" && pathname === "/") || (targetHash && hash === targetHash);
+              !isMail && ((it.href === "/" && pathname === "/") || (targetHash && hash === targetHash));
             return (
               <Link
                 key={it.href}
@@ -70,13 +72,14 @@ export default function HeaderNav() {
 
       {/* モバイルドロワー */}
       {open && (
-        <div className="border-t border-white/10 bg-black/90 md:hidden">
+        <div className="border-t border-white/10 bg-black/95 md:hidden">
           <div className="mx-auto max-w-6xl px-4 py-2">
             <ul className="flex flex-col">
               {items.map((it) => {
+                const isMail = it.href.startsWith("mailto:");
                 const targetHash = it.href.startsWith("/#") ? `#${it.href.split("#")[1]}` : "";
                 const active =
-                  (it.href === "/" && pathname === "/") || (targetHash && hash === targetHash);
+                  !isMail && ((it.href === "/" && pathname === "/") || (targetHash && hash === targetHash));
                 return (
                   <li key={it.href}>
                     <Link
