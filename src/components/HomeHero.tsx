@@ -98,7 +98,7 @@ export default function HomeHero() {
         <StaggerText
           lines={[
             "私たちが目指すのは、誰もが公平に技術の恩恵を受けられる社会です。",
-            "使う人の仕事を少しでも楽にし、新しい可能性を切り開く。",
+            "使う人の仕事を少しでも楽にし、新しい価値を切り開く。",
             "Xenovantは、そのためのプロダクトを開発し続けます。",
           ]}
           className="text-muted-foreground mx-auto mt-5 max-w-3xl space-y-2 text-lg leading-relaxed md:text-xl"
