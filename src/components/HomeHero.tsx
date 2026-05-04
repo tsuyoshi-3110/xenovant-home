@@ -14,12 +14,14 @@ export default function HomeHero() {
 
   function StaggerText({
     text,
+    lines,
     className,
     delay = 0.2,
     duration = 0.7,
     stagger = 0.035,
   }: {
-    text: string;
+    text?: string;
+    lines?: string[];
     className?: string;
     delay?: number;
     duration?: number;
@@ -34,14 +36,20 @@ export default function HomeHero() {
       show: { opacity: 1, y: 0, transition: { duration, ease: EASE } },
     };
 
+    const displayLines = lines ?? (text ? [text] : []);
+
     return (
-      <motion.p variants={p} initial="hidden" animate="show" className={className}>
-        {Array.from(text).map((ch, i) => (
-          <motion.span key={i} variants={c} className="inline-block">
-            {ch === " " ? "\u00A0" : ch}
-          </motion.span>
+      <motion.div variants={p} initial="hidden" animate="show" className={className}>
+        {displayLines.map((line, lineIndex) => (
+          <p key={`${line}-${lineIndex}`} className="block">
+            {Array.from(line).map((ch, i) => (
+              <motion.span key={`${lineIndex}-${i}`} variants={c} className="inline-block">
+                {ch === " " ? "\u00A0" : ch}
+              </motion.span>
+            ))}
+          </p>
         ))}
-      </motion.p>
+      </motion.div>
     );
   }
 
@@ -55,7 +63,11 @@ export default function HomeHero() {
 
       {/* ヒーロー */}
       <section className="mx-auto max-w-6xl px-6 pt-10 text-center">
-        <motion.div initial={{ opacity: 0, y: -8 }} animate={{ opacity: 1, y: 0 }} transition={{ duration: 0.6 }}>
+        <motion.div
+          initial={{ opacity: 0, y: -8 }}
+          animate={{ opacity: 1, y: 0 }}
+          transition={{ duration: 0.6 }}
+        >
           <Image
             src="/logo.png"
             alt="ゼノバントのロゴ"
@@ -66,7 +78,12 @@ export default function HomeHero() {
           />
         </motion.div>
 
-        <motion.h1 variants={parent} initial="hidden" animate="show" className="text-5xl font-extrabold tracking-tight md:text-7xl">
+        <motion.h1
+          variants={parent}
+          initial="hidden"
+          animate="show"
+          className="text-5xl font-extrabold tracking-tight md:text-7xl"
+        >
           {"Xenovant".split("").map((ch, i) => (
             <motion.span
               key={i}
@@ -79,15 +96,13 @@ export default function HomeHero() {
         </motion.h1>
 
         <StaggerText
-          text="XENOVANTは、『革新』と『先駆者』の意味を込めた名前です。現場で生まれる課題に向き合い、実用的なテクノロジーで新しい仕組みをつくっていきます。"
-          className="text-muted-foreground mx-auto mt-5 max-w-3xl text-lg leading-relaxed md:text-xl"
+          lines={[
+            "私たちが目指すのは、誰もが公平に技術の恩恵を受けられる社会です。",
+            "使う人の仕事を少しでも楽にし、新しい可能性を切り開く。",
+            "Xenovantは、そのためのプロダクトを開発し続けます。",
+          ]}
+          className="text-muted-foreground mx-auto mt-5 max-w-3xl space-y-2 text-lg leading-relaxed md:text-xl"
           delay={0.2}
-        />
-
-        <StaggerText
-          text="私たちが目指すのは、誰もが公平に技術の恩恵を受けられる社会です。属人化や非効率を減らし、使う人の仕事を少しでも楽にする。XENOVANTは、そのためのプロダクトを開発し続けます。"
-          className="text-muted-foreground/90 mx-auto mt-3 max-w-4xl text-base leading-relaxed md:text-lg"
-          delay={0.3}
         />
 
         <motion.div
