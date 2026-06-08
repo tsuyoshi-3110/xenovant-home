@@ -52,13 +52,20 @@ const PROJECTS: Project[] = [
     link: "https://www.pageit.shop/",
   },
   {
-    id: "manabeba",
-    name: "manabeba",
-    slug: "manabeba",
-    desc: "AIが伴走する無料の学習プラットフォーム。学びに機会均等を",
-    img: "/projects/manabebaLogo.png",
-    tags: ["Education"],
-    // link なし → 制作中表示
+    id: "sealing-app",
+    name: "SealingApp",
+    slug: "sealing-app",
+    desc: "シーリング材料計算アプリ。現場の施工条件を入力するだけで、必要な材料量を素早く算出。",
+    img: "/projects/sealingAppLogo.png",
+    tags: ["Construction", "App"],
+  },
+  {
+    id: "urethan-app",
+    name: "UrethanApp",
+    slug: "urethan-app",
+    desc: "防水材料計算アプリ。ウレタン防水工事に必要な材料量を、工法や面積から正確に計算。",
+    img: "/projects/urethanAppLogo.png",
+    tags: ["Construction", "App"],
   },
 ];
 
@@ -93,8 +100,18 @@ export default function ProjectsGrid() {
         <div className="absolute inset-x-0 top-0 h-20 bg-gradient-to-b from-black/5 to-transparent dark:from-white/5" />
       </div>
 
-      <motion.section variants={container} initial="hidden" animate="show" className="mx-auto max-w-6xl">
-        <motion.h1 variants={parent} initial="hidden" animate="show" className="text-4xl font-extrabold tracking-tight md:text-7xl">
+      <motion.section
+        variants={container}
+        initial="hidden"
+        animate="show"
+        className="mx-auto max-w-6xl"
+      >
+        <motion.h1
+          variants={parent}
+          initial="hidden"
+          animate="show"
+          className="text-4xl font-extrabold tracking-tight md:text-7xl"
+        >
           {"Products".split("").map((ch, i) => (
             <motion.span
               key={i}
@@ -110,7 +127,7 @@ export default function ProjectsGrid() {
         <motion.ul variants={container} className="mt-10 grid gap-6 sm:grid-cols-2 lg:grid-cols-3">
           {PROJECTS.map((p) => (
             <motion.li key={p.id} variants={item} className="group h-full">
-              <div className="overflow-hidden rounded-2xl border bg-background/70 backdrop-blur  shadow-lg transition-shadow group-hover:shadow-xl h-full flex flex-col">
+              <div className="bg-background/70 flex h-full flex-col overflow-hidden rounded-2xl border shadow-lg backdrop-blur transition-shadow group-hover:shadow-xl">
                 <div className="relative aspect-[16/10] w-full">
                   {p.images && p.images.length > 0 ? (
                     <div className="absolute inset-0 flex items-center justify-center gap-4 px-5">
@@ -137,11 +154,13 @@ export default function ProjectsGrid() {
                       unoptimized
                     />
                   ) : (
-                    <div className="absolute inset-0 grid place-items-center text-xs text-muted-foreground">No image</div>
+                    <div className="text-muted-foreground absolute inset-0 grid place-items-center text-xs">
+                      No image
+                    </div>
                   )}
                 </div>
 
-                <div className="flex-1 p-5 flex flex-col">
+                <div className="flex flex-1 flex-col p-5">
                   <div className="flex items-start justify-between gap-3">
                     <h3 className="text-lg font-semibold tracking-tight">{p.name}</h3>
                     <div className="flex shrink-0 gap-2">
@@ -153,23 +172,25 @@ export default function ProjectsGrid() {
                     </div>
                   </div>
 
-                  <p className="mt-2 text-sm text-muted-foreground line-clamp-3">{p.desc}</p>
+                  <p className="text-muted-foreground mt-2 line-clamp-3 text-sm">{p.desc}</p>
 
-                  <div className="mt-auto pt-4 flex items-center justify-between">
+                  <div className="mt-auto flex items-center justify-between pt-4">
                     {p.link ? (
                       <a
                         href={p.link}
                         target="_blank"
                         rel="noopener noreferrer"
-                        className="text-xs text-foreground/80 underline-offset-4 hover:underline"
+                        className="text-foreground/80 text-xs underline-offset-4 hover:underline"
                         aria-label={`${p.name} の公式サイトを開く`}
                       >
                         公式サイト
                       </a>
                     ) : (
-                      <span className="text-[10px] rounded-full border px-2 py-0.5 text-muted-foreground">制作中</span>
+                      <span className="text-muted-foreground rounded-full border px-2 py-0.5 text-[10px]">
+                        制作中
+                      </span>
                     )}
-                    <span className="text-[11px] text-muted-foreground/80">#{p.slug}</span>
+                    <span className="text-muted-foreground/80 text-[11px]">#{p.slug}</span>
                   </div>
                 </div>
               </div>

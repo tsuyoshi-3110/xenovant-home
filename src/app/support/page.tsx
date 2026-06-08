@@ -49,11 +49,11 @@ export default function SupportPage() {
             アプリの不具合、操作方法、ログイン、アカウントに関するご相談は、下記メールアドレスまでご連絡ください。
           </p>
           <a
-            href="mailto:xenovant.ts@gmail.com"
+            href="mailto:info@xenovant.jp"
             className="bg-primary text-primary-foreground inline-flex items-center gap-2 rounded-lg px-4 py-2.5 text-sm font-medium transition-opacity hover:opacity-90"
           >
             <Mail className="size-4" aria-hidden />
-            xenovant.ts@gmail.com
+            info@xenovant.jp
           </a>
         </div>
 
