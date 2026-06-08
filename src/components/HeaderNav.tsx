@@ -10,6 +10,7 @@ import { cn } from "@/lib/utils";
 const items = [
   { href: "/Products", label: "Products" },
   { href: "/about", label: "About" },
+  { href: "/support", label: "Support" },
   { href: "mailto:xenovant.ts@gmail.com", label: "Contact" },
 ];
 
