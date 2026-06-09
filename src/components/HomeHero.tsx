@@ -2,8 +2,25 @@
 
 import Image from "next/image";
 import { motion, type Variants, type Transition } from "framer-motion";
+import { useLanguage } from "@/lib/language";
+
+const T = {
+  lines: {
+    ja: [
+      "私たちが目指すのは、誰もが公平に技術の恩恵を受けられる社会です。",
+      "使う人の仕事を少しでも楽にし、新しい価値を切り開く。",
+      "Xenovantは、そのためのプロダクトを開発し続けます。",
+    ],
+    en: [
+      "We believe everyone deserves equal access to the benefits of technology.",
+      "We make work easier and open new possibilities.",
+      "Xenovant builds products to make that happen.",
+    ],
+  },
+};
 
 export default function HomeHero() {
+  const { lang } = useLanguage();
   const EASE: Transition["ease"] = [0.16, 1, 0.3, 1];
 
   const parent: Variants = { hidden: {}, show: {} };
@@ -13,15 +30,13 @@ export default function HomeHero() {
   };
 
   function StaggerText({
-    text,
     lines,
     className,
     delay = 0.2,
     duration = 0.7,
     stagger = 0.035,
   }: {
-    text?: string;
-    lines?: string[];
+    lines: string[];
     className?: string;
     delay?: number;
     duration?: number;
@@ -36,15 +51,13 @@ export default function HomeHero() {
       show: { opacity: 1, y: 0, transition: { duration, ease: EASE } },
     };
 
-    const displayLines = lines ?? (text ? [text] : []);
-
     return (
       <motion.div variants={p} initial="hidden" animate="show" className={className}>
-        {displayLines.map((line, lineIndex) => (
+        {lines.map((line, lineIndex) => (
           <p key={`${line}-${lineIndex}`} className="block">
             {Array.from(line).map((ch, i) => (
               <motion.span key={`${lineIndex}-${i}`} variants={c} className="inline-block">
-                {ch === " " ? "\u00A0" : ch}
+                {ch === " " ? " " : ch}
               </motion.span>
             ))}
           </p>
@@ -96,11 +109,8 @@ export default function HomeHero() {
         </motion.h1>
 
         <StaggerText
-          lines={[
-            "私たちが目指すのは、誰もが公平に技術の恩恵を受けられる社会です。",
-            "使う人の仕事を少しでも楽にし、新しい価値を切り開く。",
-            "Xenovantは、そのためのプロダクトを開発し続けます。",
-          ]}
+          key={lang}
+          lines={T.lines[lang]}
           className="text-muted-foreground mx-auto mt-5 max-w-3xl space-y-2 text-lg leading-relaxed md:text-xl"
           delay={0.2}
         />

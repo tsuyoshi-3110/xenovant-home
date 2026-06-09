@@ -3,17 +3,19 @@
 import Image from "next/image";
 import Link from "next/link";
 import { motion, type Variants, type Transition } from "framer-motion";
+import { useLanguage } from "@/lib/language";
 
 type Project = {
   id: string;
   name: string;
   slug: string;
   desc: string;
+  descEn: string;
   img?: string;
   images?: string[];
   tags?: string[];
-  link?: string;  // 外部リンク（ない場合は「制作中」表示）
-  href?: string;  // 内部ルート
+  link?: string;
+  href?: string;
 };
 
 const PROJECTS: Project[] = [
@@ -22,6 +24,7 @@ const PROJECTS: Project[] = [
     name: "ProcNova",
     slug: "procnova",
     desc: "工程表・工事写真・居住者案内・職人連携を統合する、マンション大規模修繕工事向け施工管理システム。",
+    descEn: "An integrated construction management system for large-scale condo renovations — schedules, site photos, resident notices, and worker coordination.",
     img: "/projects/procNovaLogoIcon.png",
     tags: ["Construction", "SaaS"],
     link: "https://procnova.jp/",
@@ -31,6 +34,7 @@ const PROJECTS: Project[] = [
     name: "Proclink",
     slug: "proclink",
     desc: "現場で撮影した写真を工程構造に紐づけ、自動整理する工事写真撮影アプリ。",
+    descEn: "A construction photo app that links field photos to project workflows and organizes them automatically.",
     img: "/projects/proclinkIcon.png",
     tags: ["Construction", "App"],
     href: "/Products/proclink",
@@ -40,6 +44,7 @@ const PROJECTS: Project[] = [
     name: "TSMatelix",
     slug: "tsmatelix",
     desc: "建設現場の材料発注を、よりスムーズに。次世代の統合型アプリ",
+    descEn: "Streamlining material ordering on construction sites. A next-generation integrated app.",
     img: "/projects/tsmatelixLogo.png",
     tags: ["Construction", "Materials"],
     link: "https://www.tsmatelix.shop/",
@@ -49,6 +54,7 @@ const PROJECTS: Project[] = [
     name: "Pageit",
     slug: "pageit",
     desc: "SNS世代のために設計された、動画×スマホ×AI対応のウェブアプリサービス。",
+    descEn: "A web app service designed for the social media generation — video, mobile, and AI-ready.",
     img: "/projects/iconImage.png",
     tags: ["Web", "Publisher"],
     link: "https://www.pageit.shop/",
@@ -58,6 +64,7 @@ const PROJECTS: Project[] = [
     name: "SealingApp",
     slug: "sealing-app",
     desc: "シーリング材料計算アプリ。現場の施工条件を入力するだけで、必要な材料量を素早く算出。",
+    descEn: "A sealing material calculator. Enter site conditions to quickly estimate required quantities.",
     img: "/projects/sealingAppLogo.png",
     tags: ["Construction", "App"],
   },
@@ -66,12 +73,18 @@ const PROJECTS: Project[] = [
     name: "UrethanApp",
     slug: "urethan-app",
     desc: "防水材料計算アプリ。ウレタン防水工事に必要な材料量を、工法や面積から正確に計算。",
+    descEn: "A waterproofing material calculator. Estimate urethane waterproofing quantities by method and area.",
     img: "/projects/urethanAppLogo.png",
     tags: ["Construction", "App"],
   },
 ];
 
+const T = {
+  learnMore: { ja: "詳細を見る →", en: "Learn more →" },
+};
+
 export default function ProjectsGrid() {
+  const { lang } = useLanguage();
   const EASE: Transition["ease"] = [0.16, 1, 0.3, 1];
 
   const container: Variants = {
@@ -131,6 +144,8 @@ export default function ProjectsGrid() {
             const cardClass =
               "bg-background/70 flex h-full flex-col overflow-hidden rounded-2xl border shadow-lg backdrop-blur transition-shadow group-hover:shadow-xl";
 
+            const desc = lang === "en" ? p.descEn : p.desc;
+
             const cardBody = (
               <>
                 <div className="relative aspect-[16/10] w-full">
@@ -177,7 +192,7 @@ export default function ProjectsGrid() {
                     </div>
                   </div>
 
-                  <p className="text-muted-foreground mt-2 line-clamp-3 text-sm">{p.desc}</p>
+                  <p className="text-muted-foreground mt-2 line-clamp-3 text-sm">{desc}</p>
 
                   <div className="mt-auto flex items-center justify-between pt-4">
                     {p.link ? (
@@ -188,10 +203,10 @@ export default function ProjectsGrid() {
                         className="text-foreground/80 text-xs underline-offset-4 hover:underline"
                         aria-label={`${p.name} の詳細を見る`}
                       >
-                        詳細を見る →
+                        {T.learnMore[lang]}
                       </a>
                     ) : p.href ? (
-                      <span className="text-foreground/70 text-xs">詳細を見る →</span>
+                      <span className="text-foreground/70 text-xs">{T.learnMore[lang]}</span>
                     ) : (
                       <span />
                     )}

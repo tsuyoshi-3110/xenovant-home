@@ -1,20 +1,55 @@
 "use client";
 
+import React from "react";
 import Link from "next/link";
 import Image from "next/image";
 import { usePathname } from "next/navigation";
 import { useEffect, useState } from "react";
 import { Menu, X } from "lucide-react";
 import { cn } from "@/lib/utils";
+import { useLanguage } from "@/lib/language";
+import type { Lang } from "@/lib/language";
 
-const items = [
-  { href: "/Products", label: "Products" },
-  { href: "/about", label: "About" },
-  { href: "/support", label: "Support" },
-  { href: "mailto:xenovant.ts@gmail.com", label: "Contact" },
-];
+const NAV_ITEMS = {
+  ja: [
+    { href: "/Products", label: "Products" },
+    { href: "/about", label: "About" },
+    { href: "/support", label: "Support" },
+    { href: "mailto:xenovant.ts@gmail.com", label: "Contact" },
+  ],
+  en: [
+    { href: "/Products", label: "Products" },
+    { href: "/about", label: "About" },
+    { href: "/support", label: "Support" },
+    { href: "mailto:xenovant.ts@gmail.com", label: "Contact" },
+  ],
+};
+
+function LangToggle({ className }: { className?: string }) {
+  const { lang, setLang } = useLanguage();
+  return (
+    <div className={cn("flex items-center gap-0.5", className)}>
+      {(["ja", "en"] as Lang[]).map((l, i) => (
+        <React.Fragment key={l}>
+          {i > 0 && <span className="text-white/20 text-xs select-none">|</span>}
+          <button
+            onClick={() => setLang(l)}
+            className={cn(
+              "px-1.5 py-0.5 text-xs font-semibold tracking-widest uppercase transition-colors",
+              lang === l ? "text-white" : "text-white/35 hover:text-white/70",
+            )}
+          >
+            {l.toUpperCase()}
+          </button>
+        </React.Fragment>
+      ))}
+    </div>
+  );
+}
 
 export default function HeaderNav() {
+  const { lang } = useLanguage();
+  const items = NAV_ITEMS[lang];
   const pathname = usePathname();
   const [hash, setHash] = useState("");
   const [open, setOpen] = useState(false);
@@ -26,7 +61,6 @@ export default function HeaderNav() {
     return () => window.removeEventListener("hashchange", onHash);
   }, []);
 
-  // ルーティング/ハッシュ遷移で自動クローズ
   useEffect(() => setOpen(false), [pathname, hash]);
 
   return (
@@ -59,16 +93,20 @@ export default function HeaderNav() {
               </Link>
             );
           })}
+          <LangToggle className="ml-2 border-l border-white/15 pl-4" />
         </nav>
 
-        {/* モバイルメニュー切替 */}
-        <button
-          className="inline-flex items-center justify-center rounded-md p-2 text-white/80 hover:text-white md:hidden"
-          aria-label="Toggle menu"
-          onClick={() => setOpen((v) => !v)}
-        >
-          {open ? <X className="size-6" /> : <Menu className="size-6" />}
-        </button>
+        {/* モバイル右側：トグル＋ハンバーガー */}
+        <div className="flex items-center gap-3 md:hidden">
+          <LangToggle />
+          <button
+            className="inline-flex items-center justify-center rounded-md p-2 text-white/80 hover:text-white"
+            aria-label="Toggle menu"
+            onClick={() => setOpen((v) => !v)}
+          >
+            {open ? <X className="size-6" /> : <Menu className="size-6" />}
+          </button>
+        </div>
       </div>
 
       {/* モバイルドロワー */}
@@ -97,7 +135,6 @@ export default function HeaderNav() {
               })}
             </ul>
           </div>
-          {/* セーフエリア（iPhone） */}
           <div className="h-[env(safe-area-inset-top,0px)]" />
         </div>
       )}

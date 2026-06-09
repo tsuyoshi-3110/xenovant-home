@@ -2,6 +2,7 @@
 import type { Metadata } from "next";
 import "./globals.css";
 import HeaderNav from "@/components/HeaderNav";
+import { LanguageProvider } from "@/lib/language";
 
 const SITE = "https://xenovant.jp";
 // ← LINEなどのキャッシュ回避のためにバージョンを付与（値は更新時に変えてOK）
@@ -60,8 +61,10 @@ export default function RootLayout({ children }: { children: React.ReactNode }) 
         <link rel="canonical" href={SITE} />
       </head>
       <body>
-        <HeaderNav />
-        {children}
+        <LanguageProvider>
+          <HeaderNav />
+          {children}
+        </LanguageProvider>
       </body>
     </html>
   );
