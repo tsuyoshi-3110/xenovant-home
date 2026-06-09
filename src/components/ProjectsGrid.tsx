@@ -1,6 +1,7 @@
 "use client";
 
 import Image from "next/image";
+import Link from "next/link";
 import { motion, type Variants, type Transition } from "framer-motion";
 
 type Project = {
@@ -11,7 +12,8 @@ type Project = {
   img?: string;
   images?: string[];
   tags?: string[];
-  link?: string; // 外部リンク（ない場合は「制作中」表示）
+  link?: string;  // 外部リンク（ない場合は「制作中」表示）
+  href?: string;  // 内部ルート
 };
 
 const PROJECTS: Project[] = [
@@ -31,7 +33,7 @@ const PROJECTS: Project[] = [
     desc: "現場で撮影した写真を工程構造に紐づけ、自動整理する工事写真撮影アプリ。",
     img: "/projects/proclinkIcon.png",
     tags: ["Construction", "App"],
-    link: "https://procnova.jp/",
+    href: "/Products/proclink",
   },
   {
     id: "tsmatelix",
@@ -125,9 +127,12 @@ export default function ProjectsGrid() {
 
         {/* カード */}
         <motion.ul variants={container} className="mt-10 grid gap-6 sm:grid-cols-2 lg:grid-cols-3">
-          {PROJECTS.map((p) => (
-            <motion.li key={p.id} variants={item} className="group h-full">
-              <div className="bg-background/70 flex h-full flex-col overflow-hidden rounded-2xl border shadow-lg backdrop-blur transition-shadow group-hover:shadow-xl">
+          {PROJECTS.map((p) => {
+            const cardClass =
+              "bg-background/70 flex h-full flex-col overflow-hidden rounded-2xl border shadow-lg backdrop-blur transition-shadow group-hover:shadow-xl";
+
+            const cardBody = (
+              <>
                 <div className="relative aspect-[16/10] w-full">
                   {p.images && p.images.length > 0 ? (
                     <div className="absolute inset-0 flex items-center justify-center gap-4 px-5">
@@ -181,21 +186,33 @@ export default function ProjectsGrid() {
                         target="_blank"
                         rel="noopener noreferrer"
                         className="text-foreground/80 text-xs underline-offset-4 hover:underline"
-                        aria-label={`${p.name} の公式サイトを開く`}
+                        aria-label={`${p.name} の詳細を見る`}
                       >
-                        公式サイト
+                        詳細を見る →
                       </a>
+                    ) : p.href ? (
+                      <span className="text-foreground/70 text-xs">詳細を見る →</span>
                     ) : (
-                      <span className="text-muted-foreground rounded-full border px-2 py-0.5 text-[10px]">
-                        制作中
-                      </span>
+                      <span />
                     )}
                     <span className="text-muted-foreground/80 text-[11px]">#{p.slug}</span>
                   </div>
                 </div>
-              </div>
-            </motion.li>
-          ))}
+              </>
+            );
+
+            return (
+              <motion.li key={p.id} variants={item} className="group h-full">
+                {p.href ? (
+                  <Link href={p.href} className={cardClass}>
+                    {cardBody}
+                  </Link>
+                ) : (
+                  <div className={cardClass}>{cardBody}</div>
+                )}
+              </motion.li>
+            );
+          })}
         </motion.ul>
       </motion.section>
     </main>
