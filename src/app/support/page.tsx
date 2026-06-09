@@ -31,10 +31,6 @@ export default function SupportPage() {
           <h1 className="bg-gradient-to-b from-gray-900 to-gray-500 bg-clip-text text-4xl font-extrabold tracking-tight text-transparent drop-shadow-xl md:text-6xl">
             サポート
           </h1>
-          <p className="text-muted-foreground leading-relaxed">
-            Proclinkは、建設現場向けの工事写真管理アプリです。
-            工種・工区・工程・撮影項目ごとに写真を整理しながら撮影し、現場関係者との情報共有をサポートします。
-          </p>
         </div>
 
         {/* お問い合わせ */}
